@@ -1,6 +1,8 @@
 /venv
 /.vscode
 /staticfiles
-/api/__pycache__
+/api/__pycache__/
 *.pyc
-/core/migrations
+/core/migrations/
+/__pycache__/
+/core/__pycache__/

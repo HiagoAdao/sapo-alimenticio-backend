@@ -4,33 +4,34 @@ import glob
 import codecs
 import re
 from datetime import datetime
+# from .models import Alimento, Arquivo
+from django.db import connection, transaction
 
-import sqlite3
+
+# import sqlite3
 
 pathfiles = './filestxt'
 mylines = []
 
 
 def extrair_db():
-
-    try:
-        conn = sqlite3.connect('db.sqlite3')
-    except:
-        print('Não possivel conectar ao Banco de Dados')
     
-    cursor = conn.cursor()
+    cursor = connection.cursor()
 
     def insert_data():
 
         try:
             # inserindo dados na tabela
-            cursor.executemany("""
-            INSERT INTO core_alimento (nome, quantidade, proteinas, carboidratos, gorduras, criado_em)
-            VALUES (:nome, :quantidade, :proteinas, :carboidratos, :gorduras, :criado_em)
-            ON CONFLICT(nome) DO UPDATE SET nome=:nome, quantidade=:quantidade, proteinas=:proteinas, carboidratos=:carboidratos, gorduras=:gorduras
-            """, mylines)
 
-            conn.commit()
+            cursor.executemany("""INSERT INTO core_alimento (nome, quantidade, proteinas, carboidratos, gorduras, criado_em)
+            VALUES (%s, %s, %s, %s, %s, %s) ON CONFLICT(nome) DO NOTHING """, mylines)
+
+            # cursor.executemany("""
+            # INSERT INTO core_alimento (nome, quantidade, proteinas, carboidratos, gorduras, criado_em)
+            # VALUES (:nome, :quantidade, :proteinas, :carboidratos, :gorduras, :criado_em)
+            # ON CONFLICT(nome) DO UPDATE SET nome=:nome, quantidade=:quantidade, proteinas=:proteinas, carboidratos=:carboidratos, gorduras=:gorduras
+            # """, mylines)
+
             print('Dados inseridos com sucesso.')
         except:
             print('Ocorreu um erro ao inserir os dados no banco de dados')
@@ -63,8 +64,7 @@ def extrair_db():
 
     find_files(pathfiles)
 
-    conn.close()
+    cursor.close()
 
 
 # extrair_db()
-# extrair_db().find_files(pathfiles)
