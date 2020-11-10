@@ -23,7 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'atcoag0q3w45p#uc4eeh!u9w)m3t11bqo^bq2hoc&dy9=z-2tx'
-# SECRET_KEY = os.environ('SECRET_KEY')
+# SECRET_KEY = os.environ['SECRET_KEY']
+# print(SECRET_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -40,9 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',
     'corsheaders',
     'rest_framework',
+    'core',
+    # 'core.apps.CoreConfig',
 ]
 
 MIDDLEWARE = [
@@ -139,7 +141,7 @@ CORS_ALLOWED_ORIGINS = [
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ORIGIN_WHITELIST = ('null','127.0.0.1:3000','localhost:3000',)
+CORS_ORIGIN_WHITELIST = ('null','127.0.0.1:3000','localhost:3000','localhost')
 
 UPLOADED_FILES_USE_URL = 'filestxt'
 
