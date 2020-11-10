@@ -4,7 +4,6 @@ import glob
 import codecs
 import re
 from datetime import datetime
-# from .models import Alimento, Arquivo
 from django.db import connection, transaction
 
 
