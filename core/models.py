@@ -34,7 +34,6 @@ class Arquivo(models.Model):
         if not self.criado_em:
             self.criado_em = datetime.now()
         self.atualizado_em = datetime.now()
-        # import ipdb; ipdb.set_trace()
         extrair_db()
 
         return super(Arquivo, self).save(*args, **kwargs)

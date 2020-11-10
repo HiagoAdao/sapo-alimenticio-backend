@@ -56,19 +56,10 @@ def extrair_db():
 
         for (dirpath, dirnames, filenames) in walk(path):
             for file in filenames:
-                # import ipdb; ipdb.set_trace()
                 if '.txt' in file:
                     read_file(path+'/'+file)
                     # print(path+'/'+file)
 
-        
-
-
-        # os.chdir(path)
-        # for c in os.listdir(path):
-        #     if os.path.isfile(path):
-        #         read_file(os.path.basename(path))
-        #         print(path)
 
     find_files(pathfiles)
 
