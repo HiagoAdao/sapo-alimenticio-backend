@@ -1,0 +1,4 @@
+/venv
+/.vscode
+/staticfiles
+/db.sqlite3
