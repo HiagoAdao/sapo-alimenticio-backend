@@ -19,24 +19,24 @@ class AlimentosViewSet(viewsets.ModelViewSet):
 
 class AlimentosProteinasViewSet(viewsets.ModelViewSet):
     queryset = Alimento.objects.raw("""
-        SELECT * FROM core_alimento
-        GROUP BY proteinas, nome
+        SELECT nome, gorduras, quantidade, carboidratos, proteinas, gorduras FROM core_alimento
+        GROUP BY gorduras, nome, quantidade, carboidratos, proteinas, gorduras
         HAVING proteinas >= (SELECT AVG(proteinas) FROM core_alimento)
         ORDER BY proteinas DESC """)
     serializer_class = AlimentoSerializer
 
 class AlimentosCarboidratosViewSet(viewsets.ModelViewSet):
     queryset = Alimento.objects.raw("""
-        SELECT * FROM core_alimento
-        GROUP BY carboidratos, nome
+        SELECT nome, gorduras, quantidade, carboidratos, proteinas, gorduras FROM core_alimento
+        GROUP BY gorduras, nome, quantidade, carboidratos, proteinas, gorduras
         HAVING carboidratos >= (SELECT AVG(carboidratos) FROM core_alimento)
         ORDER BY carboidratos DESC """)
     serializer_class = AlimentoSerializer
 
 class AlimentosGordurasViewSet(viewsets.ModelViewSet):
     queryset = Alimento.objects.raw("""
-        SELECT * FROM core_alimento
-        GROUP BY gorduras, nome
+        SELECT nome, gorduras, quantidade, carboidratos, proteinas, gorduras FROM core_alimento
+        GROUP BY gorduras, nome, quantidade, carboidratos, proteinas, gorduras
         HAVING gorduras >= (SELECT AVG(gorduras) FROM core_alimento)
         ORDER BY gorduras DESC """)
     serializer_class = AlimentoSerializer    
