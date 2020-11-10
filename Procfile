@@ -1,3 +1,3 @@
-release: python manage.py migrate --no-input
+release: dbmigration.sh
 
 web: gunicorn api.wsgi
