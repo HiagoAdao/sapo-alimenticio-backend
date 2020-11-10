@@ -1,3 +1,3 @@
-release: python manage.py makemigrations core --no-input
+release: ./dbmigrations.sh
 
 web: gunicorn api.wsgi
