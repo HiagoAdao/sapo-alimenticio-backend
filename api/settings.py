@@ -2,6 +2,9 @@
 import os
 import django_heroku
 from pathlib import Path
+from decouple import config
+# from dj_database_url import parse as db_url
+import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -12,12 +15,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'atcoag0q3w45p#uc4eeh!u9w)m3t11bqo^bq2hoc&dy9=z-2tx'
 # SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = config('SECRET_KEY')
+
 # print(SECRET_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
+TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = ['*']
 
@@ -34,7 +40,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'core',
-    # 'core.apps.CoreConfig',
 ]
 
 MIDDLEWARE = [
@@ -73,30 +78,11 @@ WSGI_APPLICATION = 'api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dbnfke5v01a7nl',
-        'USER': 'txaqqingrganit',
-        'PASSWORD': '8212e84ce34d54761a00624ae31e5fb79bf875a68ffdebd1ce3057532300ce85',
-        'HOST': 'ec2-54-159-107-189.compute-1.amazonaws.com',
-        'PORT': '5432',
-    }
-
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'postgres',
-    #     'USER': 'postgres',
-    #     'PASSWORD': 'postgres',
-    #     'HOST': 'localhost',
-    #     'PORT': '5432',
-    # }
-
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
+    'default': dj_database_url.config(default=config('DATABASE_URL'))
 }
+
 
 
 # Password validation
@@ -149,7 +135,7 @@ CORS_ALLOWED_ORIGINS = [
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ORIGIN_WHITELIST = ('null','127.0.0.1:3000','localhost:3000','localhost')
+CORS_ORIGIN_WHITELIST = ('null','http://127.0.0.1:3000','http://localhost:3000','http://localhost')
 
 UPLOADED_FILES_USE_URL = 'filestxt'
 

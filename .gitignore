@@ -6,3 +6,14 @@
 /core/migrations/
 /__pycache__/
 /core/__pycache__/
+api/__pycache__/__init__.cpython-38.pyc
+api/__pycache__/settings.cpython-38.pyc
+api/__pycache__/urls.cpython-38.pyc
+api/__pycache__/wsgi.cpython-38.pyc
+core/__pycache__/__init__.cpython-38.pyc
+core/__pycache__/admin.cpython-38.pyc
+core/__pycache__/models.cpython-38.pyc
+core/__pycache__/serializers.cpython-38.pyc
+core/__pycache__/views.cpython-38.pyc
+__pycache__/extractor.cpython-38.pyc
+__pycache__/helpers.cpython-38.pyc
