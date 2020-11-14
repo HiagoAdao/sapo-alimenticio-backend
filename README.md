@@ -24,20 +24,45 @@ O usuário faz upload de arquivos TXT num formato padrão pré-estabelecido, par
 
 ## Requerimentos
 
-- LINUX:
-  - sudo apt install python3-pip python3-venv libpq-dev python-dev
+- Dependências do LINUX:
+```bash
+sudo apt install python3-pip python3-venv libpq-dev python-dev
+```
 
-- python3 -m venv venv
-- source venv/bin/activate
-- pip3 install -r requirements.txt
-- python3 manage.py makemigrations core
-- python3 manage.py migrate
+- Criar ambiente virtual
+```bash
+python3 -m venv venv
+```
+- Ativar o ambiente virtual (LINUX e MAC)
+```bash
+source venv/bin/activate
+```
+- Ativar o ambiente virtual (WINDOWS)
+```bash
+venv/bin/activate.bat
+```
+
+- Instalar as dependências
+```bash
+pip3 install -r requirements.txt
+```
+- Criar as migrations
+```bash
+python3 manage.py makemigrations core
+```
+- Executar as migrations
+```bash
+python3 manage.py migrate
+```
 
 ## Execução
 
-- source venv/bin/activate
-- python3 manage.py runserver
+- Ativar o ambiente virtual conforme o respectivo SO
 
+- Executar o Server
+```bash
+python3 manage.py runserver
+```
 
 ## Uso
 - Consumir a API REST disponibilizadas pela página Root criada pelo servidor host:8000
