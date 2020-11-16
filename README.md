@@ -41,10 +41,14 @@ source venv/bin/activate
 ```bash
 venv/bin/activate.bat
 ```
-
 - Instalar as dependências
 ```bash
 pip3 install -r requirements.txt
+```
+
+- Configurar as definições do Banco de Dados no arquivo .env
+```bash
+DATABASE_URL="postgres://postgres:postgres@host:5432/postgres"
 ```
 - Criar as migrations
 ```bash
